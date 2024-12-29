@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.link {
+  color: var(--color-green-400);
+
+  @media (any-hover: hover) {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

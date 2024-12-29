@@ -1,0 +1,31 @@
+@import '../../../../styles/mixins';
+
+.wrapper {
+  padding: 124px 0;
+
+  /* stylelint-disable-next-line */
+  @include mq(md) {
+    padding: 90px 0;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+}
+
+.nav {
+  position: sticky;
+  max-width: 295px;
+  position: sticky;
+  align-self: flex-start;
+  top: 150px;
+  position: -webkit-sticky;
+
+  /* stylelint-disable-next-line */
+  @include mq(md) {
+    display: none;
+  }
+}

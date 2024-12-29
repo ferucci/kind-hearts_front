@@ -1,0 +1,26 @@
+@import '../../../../styles/mixins';
+
+.container {
+  padding-left: calc((100vw - 1400px) / 2);
+
+  /* stylelint-disable-next-line */
+  @include mq(xl) {
+    padding-left: 20px;
+  }
+
+  @include mq(sm) {
+    padding-right: 20px;
+  }
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  max-width: 1242px;
+  padding-bottom: 44px;
+
+  /* stylelint-disable-next-line */
+  @include mq(xl, min) {
+    padding-left: 80px;
+  }
+}

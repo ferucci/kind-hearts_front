@@ -1,0 +1,71 @@
+@import '../../../../styles/mixins';
+
+.wrapper {
+  @include flex-normal($justify-content: space-between);
+
+  gap: 30px;
+
+  /* stylelint-disable-next-line */
+  @include mq(md) {
+    flex-direction: column;
+  }
+}
+
+.content {
+  width: 100%;
+
+  /* stylelint-disable-next-line */
+  @include mq(xl, min) {
+    padding-left: 80px;
+  }
+
+  @include mq(md, min) {
+    flex-direction: column;
+    max-width: 505px;
+  }
+}
+
+.text {
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  p {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.link {
+  @include link-focus;
+  @include link-hover;
+
+  font-weight: 600;
+  transition:
+    box-shadow 0.3s,
+    color 0.3s;
+}
+
+.pictureWrapper {
+  @include adaptive-value-base(padding-top, 50, 22, 1);
+  @include adaptive-value-base(padding-right, 50, 22, 1);
+  @include adaptive-value-base(padding-left, 50, 22, 1);
+  @include adaptive-value-base(max-width, 690, 280, 1);
+
+  position: relative;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
+  border-top: 1px solid var(--color-purple-100);
+  border-radius: 50%;
+}
+
+.picture {
+  @include bg($background-size: cover);
+
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: inherit;
+}

@@ -1,0 +1,25 @@
+@import '../../../styles/mixins';
+
+.section {
+  flex: 0 0 auto;
+  padding-bottom: 20px !important;
+}
+
+.wrapper {
+  @include section-wrapper;
+  @include flex-normal($justify-content: space-between);
+
+  gap: 30px;
+  padding: 50px 80px;
+
+  /* stylelint-disable-next-line */
+  @include mq(xl) {
+    padding: 50px 20px;
+  }
+
+  /* stylelint-disable-next-line */
+  @include mq(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

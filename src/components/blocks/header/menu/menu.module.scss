@@ -1,0 +1,69 @@
+@import '../../../../styles/mixins';
+
+.wrapper {
+  @include mq(lg) {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+
+    overflow: hidden;
+    display: flex;
+
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    /* stylelint-disable-next-line */
+    height: 100dvh;
+    padding-top: 81px;
+
+    visibility: hidden;
+  }
+
+  &[data-open='true'] {
+    visibility: visible;
+  }
+}
+
+.menu {
+  gap: 40px;
+
+  /* stylelint-disable-next-line */
+  @include mq(lg) {
+    @include flex-direction($justify-content: space-between);
+
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    padding: 50px 40px;
+  }
+}
+
+.items {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+
+  /* stylelint-disable-next-line */
+  @include mq(lg) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.item {
+  @include mq(lg, min) {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+.mobile {
+  display: none;
+  gap: 20px;
+
+  /* stylelint-disable-next-line */
+  @include mq(lg) {
+    @include flex-direction;
+  }
+}

@@ -1,0 +1,57 @@
+@import '../../../../styles/mixins';
+
+.wrapper {
+  @include flex-normal($align-items: flex-start, $justify-content: space-between);
+
+  gap: 40px;
+  padding-left: 80px;
+
+  /* stylelint-disable-next-line */
+  @include mq(xl) {
+    padding-left: 0;
+  }
+
+  @include mq(md) {
+    flex-direction: column;
+  }
+}
+
+.descr {
+  width: 100%;
+
+  /* stylelint-disable-next-line */
+  @include mq(md, min) {
+    max-width: 530px;
+  }
+}
+
+.text {
+  p {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.link {
+  @include link-hover;
+  @include link-focus;
+
+  position: relative;
+  padding: 7px 50px 7px 0;
+
+  &::before {
+    @include bg;
+
+    content: '';
+
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    background-image: url('../../../../assets/icons/watsapp.svg');
+  }
+}

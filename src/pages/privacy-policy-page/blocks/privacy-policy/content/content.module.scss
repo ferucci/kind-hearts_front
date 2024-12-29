@@ -1,0 +1,69 @@
+@import '../../../../../styles/mixins';
+
+.container {
+  b {
+    display: inline-block;
+  }
+  /* stylelint-disable-next-line */
+  @include mq(md, min) {
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* stylelint-disable-next-line */
+  @include mq(lg, min) {
+    padding-left: 80px;
+  }
+}
+
+.nav {
+  max-width: 100%;
+  margin-bottom: 80px;
+
+  /* stylelint-disable-next-line */
+  @include mq(md, min) {
+    display: none;
+  }
+}
+
+.block {
+  * {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 80px;
+  }
+}
+
+.text {
+  * {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.noMargin {
+  * {
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.list {
+  list-style: unset;
+  padding-left: 20px;
+}
+
+.link {
+  @include link-focus;
+  @include link-hover;
+
+  transition:
+    box-shadow 0.3s,
+    color 0.3s;
+}

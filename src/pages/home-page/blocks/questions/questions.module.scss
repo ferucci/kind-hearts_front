@@ -1,0 +1,19 @@
+@import '../../../../styles/mixins';
+
+.items {
+  display: flex;
+  gap: 20px;
+
+  /* stylelint-disable-next-line */
+  @include mq(md) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}

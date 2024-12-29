@@ -1,0 +1,87 @@
+@import '../../../styles/mixins';
+
+.button {
+  @include flex-normal;
+
+  overflow: hidden;
+
+  width: 150px;
+  height: 150px;
+  padding: 8px;
+
+  font-size: 16px;
+  text-align: center;
+
+  border-radius: 50%;
+  outline: 0;
+
+  &:disabled {
+    pointer-events: none;
+    cursor: none;
+  }
+
+  /* stylelint-disable-next-line */
+  @include mq(sm) {
+    width: 120px;
+    height: 120px;
+    font-size: 15px;
+  }
+}
+
+.primary {
+  position: relative;
+  background-color: var(--color-green-400);
+  border: 1px solid var(--color-yellow-400);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+
+  span {
+    position: relative;
+
+    overflow: hidden;
+
+    transition: color 0.3s;
+    transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+    animation:
+      MoveUpInitial 0.2s forwards,
+      MoveUpEnd 0.2s forwards 0.2s;
+  }
+
+  &::before {
+    @include background-for-hover-animations;
+  }
+
+  &:disabled {
+    &::before {
+      background-color: var(--color-yellow-200);
+    }
+  }
+
+  &:focus-visible {
+    background-color: transparent;
+    box-shadow: var(--shadow-focus);
+
+    &::before {
+      background-color: transparent;
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      border: 1px solid transparent;
+
+      &::before {
+        transform: translate3d(0, 100%, 0);
+      }
+
+      span {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+.secondary {
+  border: 1px solid var(--color-yellow-400);
+}

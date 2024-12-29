@@ -1,5 +1,5 @@
 export const VARS = {
-  url: 'http://localhost:1337'
+  url: 'https://api.test.nomorepartiesco.ru'
 }
 
 export const APP_ROUTES = {

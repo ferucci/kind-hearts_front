@@ -13,7 +13,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPOSITORY,
       path: DEPLOY_PATH,
-      "post-deploy": "cd kind-hearts_front && pwd && npm ci --legacy-peer-deps && npm run build",
+      "post-deploy": "pwd && npm ci --legacy-peer-deps && npm run build",
     },
   },
 }

@@ -1,29 +1,4 @@
 import { AddressCardProps } from '@/components'
-import { CONTACTS } from '@/utils'
-
-type ContactsCardType = {
-  href: string
-  link: string
-  title: string
-}
-
-export const dataContacts: ContactsCardType[] = [
-  {
-    href: CONTACTS.phone.href,
-    link: CONTACTS.phone.label,
-    title: 'Call us',
-  },
-  {
-    href: CONTACTS.email.href,
-    link: CONTACTS.email.label,
-    title: 'E-mail us',
-  },
-  {
-    href: CONTACTS.instagram.href,
-    link: CONTACTS.instagram.label,
-    title: 'Follow us\u00A0on\u00A0social media',
-  },
-]
 
 export const dataAddress: AddressCardProps[] = [
   {

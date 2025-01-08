@@ -1,20 +1,29 @@
-const headersWithContentType = { "Content-Type": "application/json" };
+import { D } from "@/common/interface";
 
-const checkResponse = (res: any) => {
-  if (res.ok || res.created) {
+interface ResponseData {
+  data: D[];
+}
+
+// Тип данных, возвращаемый функцией getResponse
+export type GetResponseResult = ResponseData | null;
+
+const checkResponse = async (res: Response) => {
+  console.log(res)
+  if (res.ok || res.status === 201) {
     return res.json();
   }
-  return res.json().then((err: Error) => {
-    return Promise.reject(err);
-  });
+  const err = await res.json();
+  return await Promise.reject(err);
 };
 
-export const getResponse = async (url: string) => {
-
+export const getResponse = async (url: string): Promise<GetResponseResult> => {
+  console.log(url)
   const res = await fetch(url, {
     method: "GET",
-    headers: headersWithContentType,
+    mode: 'cors',
   });
 
-  return checkResponse(res);
+  const responseData = await checkResponse(res);
+
+  return responseData as GetResponseResult;
 };

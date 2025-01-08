@@ -7,7 +7,7 @@ import { APP_ROUTES } from '@/utils'
 
 import { mainResURL } from './utils/api/constants';
 import { D } from '@/common/interface'
-import { getResponse } from './utils/api';
+import { getResponse, GetResponseResult } from './utils/api';
 
 export function App() {
   const [data, setData] = useState<D[]>([]);
@@ -16,15 +16,18 @@ export function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const json: { data: D[] } = await getResponse(mainResURL);
+        const result: GetResponseResult = await getResponse(mainResURL);
 
-        setData(json.data)
-        setLoading(false)
+        if (result !== null) {
+          setData(result.data);
+        }
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch', error);
       }
-    }
-    fetchData()
+    };
+
+    fetchData();
   }, []);
 
   if (loading) return <div className="loader"></div>

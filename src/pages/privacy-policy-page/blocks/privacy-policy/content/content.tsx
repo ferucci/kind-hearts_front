@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { DPolice } from '@/common/interface'
 
 import { policyURL } from '@/utils/api/constants'
-import { getResponse } from '@/utils/api'
+import { getResponse, GetResponseResult } from '@/utils/api'
 
 
 export const PrivacyPolicyContent = () => {
@@ -18,9 +18,13 @@ export const PrivacyPolicyContent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const json: { data: DPolice[] } = await getResponse(policyURL)
+        const result: GetResponseResult<DPolice[]> = await getResponse<DPolice[]>(policyURL);
 
-        setData(json.data)
+        if (result?.data) {
+          setData(result.data);
+        } else {
+          setData([]);
+        }
         setLoading(false)
       } catch (error) {
         console.error('Failed to fetch police', error);

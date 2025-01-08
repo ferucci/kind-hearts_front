@@ -16,10 +16,12 @@ export function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result: GetResponseResult = await getResponse(mainResURL);
+        const result: GetResponseResult<D[]> = await getResponse<D[]>(mainResURL);
 
-        if (result !== null) {
+        if (result?.data) {
           setData(result.data);
+        } else {
+          setData([]);
         }
         setLoading(false);
       } catch (error) {

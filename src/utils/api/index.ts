@@ -1,11 +1,9 @@
-import { D } from "@/common/interface";
-
-interface ResponseData {
-  data: D[];
+interface ResponseData<T> {
+  data: T | null;
 }
 
 // Тип данных, возвращаемый функцией getResponse
-export type GetResponseResult = ResponseData | null;
+export type GetResponseResult<T> = ResponseData<T> | null;
 
 const checkResponse = async (res: Response) => {
   console.log(res)
@@ -16,7 +14,7 @@ const checkResponse = async (res: Response) => {
   return await Promise.reject(err);
 };
 
-export const getResponse = async (url: string): Promise<GetResponseResult> => {
+export const getResponse = async <T>(url: string): Promise<GetResponseResult<T>> => {
   console.log(url)
   const res = await fetch(url, {
     method: "GET",
@@ -25,5 +23,5 @@ export const getResponse = async (url: string): Promise<GetResponseResult> => {
 
   const responseData = await checkResponse(res);
 
-  return responseData as GetResponseResult;
+  return responseData as GetResponseResult<T>;
 };

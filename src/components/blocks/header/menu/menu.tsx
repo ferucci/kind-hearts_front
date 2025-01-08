@@ -3,45 +3,57 @@ import { Link } from 'react-scroll'
 
 import { TypographyVariant } from '@/common'
 import { Typography } from '@/components'
-import { CONTACTS, childrenStaggerVariants, parentStaggerVariants } from '@/utils'
+import { childrenStaggerVariants, parentStaggerVariants } from '@/utils'
 import { motion } from 'framer-motion'
 
 import s from './menu.module.scss'
+import { D } from '@/common/interface'
 
-const menu: Omit<MenuItemProps, 'callback'>[] = [
-  { text: 'What we do', to: 'directions' },
-  { text: 'Ways to help', to: 'ways-help' },
-  { text: 'Our cases', to: 'cases' },
-  { text: 'Tax benefits', to: 'state-support' },
-  { text: 'Contacts', to: 'contacts' },
-]
+const getMenuData = (data: D[]): Omit<MenuItemProps, 'callback'>[] => {
 
-const mobileMenu = [
-  { content: CONTACTS.phone.label, href: CONTACTS.phone.href },
-  {
-    content: CONTACTS.instagram.label,
-    href: CONTACTS.instagram.href,
-  },
-]
+  const menu: Omit<MenuItemProps, 'callback'>[] = [
+    { text: data[0].what_we_do.title, to: 'directions' },
+    { text: data[0].ways_to_help.title, to: 'ways-help' },
+    { text: data[0].our_cases_title, to: 'cases' },
+    { text: data[0].how_supported.menuItem_title, to: 'state-support' },
+    { text: data[0].contacts.title, to: 'contacts' },
+  ]
+
+  return menu
+}
+
+const getMobileMenu = (data: D[]) => {
+  const mobileMenu = [
+    { content: data[0].contacts.phone.visual, href: data[0].contacts.phone.phone },
+    {
+      content: data[0].contacts.instagram.label,
+      href: data[0].contacts.instagram.href,
+    },
+  ]
+
+  return mobileMenu
+}
 
 type Props = {
   open: boolean
   setIsOpen: (value: boolean) => void
+  data: D[]
 }
 
-export const Menu = forwardRef<HTMLDivElement, Props>(({ open, setIsOpen }, ref) => {
+export const Menu = forwardRef<HTMLDivElement, Props>(({ open, setIsOpen, data }, ref) => {
+
   return (
     <div className={s.wrapper} data-open={open} id={'burger-menu'} ref={ref} role={'menu'}>
       <div className={s.menu}>
         <motion.ul className={s.items} variants={parentStaggerVariants}>
-          {menu.map((item, index) => (
+          {getMenuData(data).map((item, index) => (
             <MenuItem callback={() => setIsOpen(false)} key={index} text={item.text} to={item.to} />
           ))}
         </motion.ul>
         <motion.ul className={s.mobile} variants={parentStaggerVariants}>
-          {mobileMenu.map((item, index) => {
+          {getMobileMenu(data).map((item, index) => {
             return (
-              <MobileMenuItem href={item.href} key={index}>
+              <MobileMenuItem href={String(item.href)} key={index}>
                 {item.content}
               </MobileMenuItem>
             )

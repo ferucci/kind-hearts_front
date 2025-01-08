@@ -1,7 +1,7 @@
 import { ReactNode, memo } from 'react'
 
 import { Accordion, AccordionItem, Typography } from '@/components'
-import { CONTACTS } from '@/utils'
+
 import { v1 } from 'uuid'
 
 import s from './questions.module.scss'
@@ -14,7 +14,7 @@ type QuestionType = {
 }
 
 const getQuestions = (data: D[]): QuestionType[] => {
-  const { questions } = data[0];
+  const { questions, contacts } = data[0];
 
   const getQuestions: QuestionType[] = questions.map((question) => (
     {
@@ -22,8 +22,8 @@ const getQuestions = (data: D[]): QuestionType[] => {
         <p>
           {question.content}
           {question.isEmail && (
-            <a href={CONTACTS.email.label} rel={'noreferrer'} target={'_blank'}>
-              {CONTACTS.email.label}
+            <a href={contacts.email.label} rel={'noreferrer'} target={'_blank'}>
+              {contacts.email.label}
             </a>
           )}
         </p>

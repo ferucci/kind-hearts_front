@@ -19,11 +19,11 @@ export const Advantages = ({ data }: Props) => {
           <div className={s.box}>
             <div className={s.text}>
               <Typography variant={TypographyVariant.subtitle2}>
-                {advantages.description}
+                {advantages.description ?? advantages.description}
               </Typography>
             </div>
             <ul className={s.items}>
-              {advantages.item.map((item: AdvantageType, index) => (
+              {advantages ? advantages.item.map((item: AdvantageType, index) => (
                 <li className={s.item} key={index}>
                   <Advantage
                     number={item.number}
@@ -32,7 +32,7 @@ export const Advantages = ({ data }: Props) => {
                     title={item.title}
                   />
                 </li>
-              ))}
+              )) : null}
             </ul>
           </div>
         </div>

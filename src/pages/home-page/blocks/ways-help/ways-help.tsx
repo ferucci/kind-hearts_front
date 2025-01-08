@@ -3,21 +3,22 @@ import { Typography } from '@/components'
 
 import s from './ways-help.module.scss'
 import { Props } from '@/common/interface'
-import { VARS } from '@/utils'
+import { apiUrl } from '@/utils'
 
 export const WaysHelp = ({ data }: Props) => {
   const { ways_to_help, contacts } = data[0]
+
   return (
     <section className={'section'} id={'ways-help'}>
       <div className={'container'}>
         <div className={s.wrapper}>
           <div className={s.content}>
             <Typography as={'h2'} variant={TypographyVariant.title}>
-              {ways_to_help.title}
+              {ways_to_help.title ?? ways_to_help.title}
             </Typography>
             <div className={s.text}>
               <Typography>
-                {ways_to_help.description}
+                {ways_to_help.description ?? ways_to_help.description}
               </Typography>
             </div>
             <div className={s.text}>
@@ -34,7 +35,7 @@ export const WaysHelp = ({ data }: Props) => {
             <div
               className={s.picture}
               style={{
-                backgroundImage: `url(${VARS.url}${ways_to_help.image.url})`,
+                backgroundImage: `url(${apiUrl}${ways_to_help.image.url})` || undefined,
               }}
             />
           </div>

@@ -13,21 +13,20 @@ import {
 import { Props } from '@/common/interface'
 
 export const HomePage = ({ data }: Props) => {
-
   return (
     <div className={'wrapper'}>
       <CustomHead
         description={
-          'The Charitable Foundation «Kind Hearts» was created to provide assistance to people in need and homeless animals.'
+          data[0].advantages.description
         }
-        title={'Home page | Kind Hearts'}
+        title={`Home page | ${data[0].name}`}
       />
       <Header data={data} />
       <main className={'main'}>
         <Hero
           data={data}
           isButton
-          slogan={'Kindness is proof of\u00A0God'}
+          slogan={''}
         />
         <Advantages data={data} />
         <Directions data={data} />

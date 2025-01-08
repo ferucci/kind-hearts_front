@@ -1,3 +1,31 @@
+interface Contacts {
+  title: string,
+  address: [
+    {
+      title: string,
+      text: string,
+      backgroundColor: string,
+      borderColor: string
+    }
+  ],
+  phone: {
+    phone: number,
+    visual: string,
+    title: string
+  },
+  email: {
+    href: string,
+    label: string,
+    title: string
+  },
+  instagram: {
+    href: string,
+    label: string,
+    title: string
+  }
+  map_link: string
+}
+
 export interface D {
   id: number,
   name: string,
@@ -65,7 +93,7 @@ export interface D {
       url: string
     }
   },
-  our_cases_title: {},
+  our_cases_title: string,
   our_cases_cards: [
     {
       title: string,
@@ -82,6 +110,7 @@ export interface D {
   ],
   how_supported: {
     title: string,
+    menuItem_title: string,
     advantages: [
       {
         id: number,
@@ -115,34 +144,50 @@ export interface D {
       description: string
     }
   },
-  contacts: {
-    title: string,
-    address: [
-      {
-        title: string,
-        text: string,
-        backgroundColor: string,
-        borderColor: string
-      }
-    ],
-    phone: {
-      phone: number,
-      visual: string,
-      title: string
-    },
-    email: {
-      href: string,
-      label: string,
-      title: string
-    },
-    instagram: {
-      href: string,
-      label: string,
-      title: string
-    }
-    map_link: string
-  }
+  contacts: Contacts
+}
+export interface Header {
+  title: string;
+  content: Description[];
+}
+export interface Description {
+  id: number;
+  description: string;
+}
+export interface ListItem {
+  id: number;
+  item: string;
+}
+export interface AddList {
+  id: number;
+  list: Description[];
+  title: string;
+}
+export interface BlockItem {
+  add_list: AddList[];
+  id: number;
+  title: string;
+  subtitle: string;
+  list: ListItem[];
+  description: Description[];
+  paragraphs: Description[];
+}
 
+export interface SectionPolice {
+  id: number;
+  title: string;
+  link_connection: string;
+  inner_blocks: BlockItem[];
+}
+
+export interface DPolice {
+  id: number;
+  updatedAt: string;
+  header: Header;
+  link_connection: string;
+  title: string;
+  section: SectionPolice[];
+  contacts: Contacts
 }
 
 export type Props = {

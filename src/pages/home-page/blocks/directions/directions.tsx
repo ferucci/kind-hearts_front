@@ -3,15 +3,14 @@ import { DirectionCard, DirectionPropsType, Typography } from '@/components'
 
 import s from './directions.module.scss'
 import { D, Props } from '@/common/interface'
-import { VARS } from '@/utils';
+import { apiUrl } from '@/utils'
 
 const getDirectionsData = (data: D[]): DirectionPropsType[] => {
   const cards = data[0].what_we_do.cards;
-
   const directionsData: DirectionPropsType[] = cards.map((item) => ({
     img: {
       alt: item.title.replace(/\s/g, '_').toLowerCase(),
-      basePath: `${VARS.url}${item.image.url.split('.').slice(0, -1).join('.')}`,
+      basePath: `${apiUrl}${item.image.url.split('.').slice(0, -1).join('.')}`,
     },
     linkTo: item.linkTo ?? item.linkTo,
     text: (
@@ -34,6 +33,8 @@ export const Directions = ({ data }: Props) => {
 
   const { what_we_do } = data[0]
 
+  if (!what_we_do) return;
+
   noList = what_we_do.tags.map(item => item.tag)
 
   return (
@@ -42,14 +43,14 @@ export const Directions = ({ data }: Props) => {
         <div className={s.header}>
           <div className={s.box}>
             <Typography as={'h2'} variant={TypographyVariant.title}>
-              {what_we_do.title}
+              {what_we_do.title ?? what_we_do.title}
             </Typography>
             <div className={s.text}>
-              {what_we_do.paragraphs.map(item =>
+              {what_we_do.title ? what_we_do.paragraphs.map(item =>
                 <Typography key={item.id}>
                   {item.description}
                 </Typography>
-              )}
+              ) : null}
             </div>
           </div>
           <NoList />

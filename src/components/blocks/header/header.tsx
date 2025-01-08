@@ -34,7 +34,7 @@ export const Header = ({ data }: Props) => {
           >
             <Logo data={data} />
             <BurgerButton isOpen={isOpenMenu} ref={burgerButtonRef} setIsOpen={setIsOpenMenu} />
-            <Menu open={isOpenMenu} ref={menuWrapperRef} setIsOpen={setIsOpenMenu} />
+            <Menu data={data} open={isOpenMenu} ref={menuWrapperRef} setIsOpen={setIsOpenMenu} />
             <motion.div className={s.background} variants={backgroundVariants} />
           </motion.nav>
         </div>

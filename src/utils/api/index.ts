@@ -1,3 +1,5 @@
+const headersWithContentType = { "Content-Type": "application/json" };
+
 const checkResponse = (res: any) => {
   if (res.ok || res.created) {
     return res.json();
@@ -7,12 +9,12 @@ const checkResponse = (res: any) => {
   });
 };
 
-const headersWithContentType = { "Content-Type": "application/json" };
+export const getResponse = async (url: string) => {
 
-export const getHeroContent = async (urlAPI: string) => {
-  const res = await fetch(URL + urlAPI, {
+  const res = await fetch(url, {
     method: "GET",
     headers: headersWithContentType,
   });
+
   return checkResponse(res);
 };

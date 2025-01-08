@@ -10,7 +10,7 @@ import 'swiper/css/pagination'
 
 import s from './cases.module.scss'
 import { D, Props } from '@/common/interface'
-import { VARS } from '@/utils'
+import { apiUrl } from '@/utils'
 
 type DataCasesType = {
   alt: string
@@ -26,10 +26,10 @@ const getCasesData = (data: D[]): DataCasesType[] => {
   const dataCases: DataCasesType[] = cards.map((card) => ({
     alt: card.title.replace(/\s/g, '_').toLowerCase(),
 
-    basePath: `${VARS.url}${card.image[0].url.split('.').slice(0, -1).join('.')}`,
+    basePath: `${apiUrl}${card.image[0].url.split('.').slice(0, -1).join('.')}`,
 
     date: card.period.date,
-    dateTime: card.period.date || '',
+    dateTime: card.period.datetime || '',
 
     title: card.title,
   }));
@@ -51,7 +51,7 @@ export const Cases = ({ data }: Props) => {
       <div className={s.container}>
         <div className={s.box}>
           <Typography as={'h2'} variant={TypographyVariant.title}>
-            Our cases
+            {data[0].our_cases_title}
           </Typography>
           <Swiper
             breakpoints={swiperBreakpoints}
@@ -60,7 +60,7 @@ export const Cases = ({ data }: Props) => {
             pagination={{ clickable: true, dynamicBullets: true }}
             spaceBetween={20}
           >
-            {getCasesData(data).map((item, index) => (
+            {getCasesData(data) ? getCasesData(data).map((item, index) => (
               <SwiperSlide key={index}>
                 <CaseCard
                   alt={item.alt}
@@ -75,7 +75,7 @@ export const Cases = ({ data }: Props) => {
                   width={610}
                 />
               </SwiperSlide>
-            ))}
+            )) : null}
           </Swiper>
         </div>
       </div>

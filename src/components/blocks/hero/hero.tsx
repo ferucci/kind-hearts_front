@@ -2,12 +2,11 @@ import { Link } from 'react-scroll'
 
 import { TypographyVariant } from '@/common'
 import { Button, Typography } from '@/components'
-import { VARS } from '@/utils';
 import { Props } from '@/common/interface'
-
+import { apiUrl } from '@/utils'
 import s from './hero.module.scss'
 
-export const Hero = ({ isButton = false, data }: Props) => {
+export const Hero = ({ isButton = false, slogan = '', data }: Props) => {
 
   const { hero } = data[0];
 
@@ -18,10 +17,10 @@ export const Hero = ({ isButton = false, data }: Props) => {
           <div className={s.content}>
 
             <Typography as={'h1'} className={s.title} variant={TypographyVariant.large}>
-              {hero.title}
+              {slogan + ' ' + hero.title}
             </Typography>
             <Typography as={'span'} className={s.slogan} variant={TypographyVariant.subtitle2}>
-              {hero.subtitle}
+              {slogan === '' ? hero.subtitle : null}
             </Typography>
 
             {isButton && (
@@ -41,14 +40,14 @@ export const Hero = ({ isButton = false, data }: Props) => {
             aria-hidden
             className={s.img}
             style={{
-              backgroundImage: `url(${VARS.url}${hero.images.main_image.url})`,
+              backgroundImage: `url(${apiUrl}${hero.images.main_image.url})`,
             }}
           />
           <span
             aria-hidden
             className={`${s.img} ${s.imgMobile}`}
             style={{
-              backgroundImage: `url(${VARS.url}${hero.images.mobile_image.url})`,
+              backgroundImage: `url(${apiUrl}${hero.images.mobile_image.url})`,
             }}
           />
         </div>

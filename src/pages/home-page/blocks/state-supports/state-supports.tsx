@@ -9,7 +9,7 @@ import { Props } from '@/common/interface'
 export const StateSupports = ({ data }: Props) => {
 
   const { how_supported } = data[0];
-
+  if (!how_supported) return;
   const getSupports = () => {
 
     const supports: SupportCardProps[] = how_supported.advantages.map(item => ({

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { LogoVariant } from '@/common'
-import { APP_ROUTES, VARS } from '@/utils'
+import { APP_ROUTES, apiUrl } from '@/utils'
 
 import s from './logo.module.scss'
 import { Props } from '@/common/interface'
@@ -14,8 +14,8 @@ export const Logo = ({ data }: Props, { to = APP_ROUTES.home, variant }: PropsLo
   const { logo_images } = data[0];
   const linkClassName = `${s.logo} ${variant ? s[String(variant)] : s.standard}`
 
-  const logoVertical = `${VARS.url}${logo_images.main_image.url}`
-  const logoHorizontal = `${VARS.url}${logo_images.mobile_image.url}`
+  const logoVertical = `${apiUrl}${logo_images.main_image.url}`
+  const logoHorizontal = `${apiUrl}${logo_images.mobile_image.url}`
 
 
   return (

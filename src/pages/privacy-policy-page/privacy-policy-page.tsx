@@ -13,7 +13,7 @@ export const PrivacyPolicyPage = ({ data }: Props) => {
       />
       <Header data={data} />
       <main className={'main'}>
-        <Hero data={data} />
+        <Hero data={data} slogan='Privacy Policy for' />
         <PrivacyPolicyBlock />
       </main>
       <Footer data={data} />

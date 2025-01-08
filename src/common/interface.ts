@@ -70,13 +70,14 @@ export interface D {
     ]
   },
   hero: {
-    title: string,
-    subtitle: string,
+    button: string;
+    title: string;
+    subtitle: string;
     images: {
-      id: number,
+      id: number;
       main_image: {
         url: string
-      },
+      }
       mobile_image: {
         url: string
       }

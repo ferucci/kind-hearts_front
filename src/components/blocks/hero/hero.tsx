@@ -32,7 +32,7 @@ export const Hero = ({ isButton = false, slogan = '', data }: Props) => {
                 smooth
                 to={'consultation'}
               >
-                Want to help
+                {hero.button}
               </Button>
             )}
           </div>

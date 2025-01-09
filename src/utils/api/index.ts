@@ -19,9 +19,10 @@ export const getResponse = async <T>(url: string): Promise<GetResponseResult<T>>
   const res = await fetch(url, {
     method: "GET",
     headers: {
-      'Content-type': 'application/json'
+      'Access-Control-Allow-Origin': 'https://khcharity.com'
     },
-    mode: 'cors',
+    credentials: 'include',
+    mode: 'cors'
   });
 
   const responseData = await checkResponse(res);

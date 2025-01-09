@@ -19,10 +19,9 @@ export const getResponse = async <T>(url: string): Promise<GetResponseResult<T>>
   const res = await fetch(url, {
     method: "GET",
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Content-type': 'application/json',
+      'Accept': 'application/json'
     },
-    credentials: 'include',
-    mode: 'cors'
   });
 
   const responseData = await checkResponse(res);

@@ -18,6 +18,9 @@ export const getResponse = async <T>(url: string): Promise<GetResponseResult<T>>
   console.log(url)
   const res = await fetch(url, {
     method: "GET",
+    headers: {
+      'Content-type': 'application/json'
+    },
     mode: 'cors',
   });
 

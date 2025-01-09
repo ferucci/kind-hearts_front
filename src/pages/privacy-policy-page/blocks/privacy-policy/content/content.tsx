@@ -20,11 +20,7 @@ export const PrivacyPolicyContent = () => {
       try {
         const result: GetResponseResult<DPolice[]> = await getResponse<DPolice[]>(policyURL);
 
-        if (result?.data) {
-          setData(result.data);
-        } else {
-          setData([]);
-        }
+        setData(result?.data ?? []);
         setLoading(false)
       } catch (error) {
         console.error('Failed to fetch police', error);

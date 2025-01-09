@@ -18,11 +18,7 @@ export function App() {
       try {
         const result: GetResponseResult<D[]> = await getResponse<D[]>(mainResURL);
 
-        if (result?.data) {
-          setData(result.data);
-        } else {
-          setData([]);
-        }
+        setData(result?.data ?? []);
         setLoading(false);
       } catch (error) {
         console.error('Failed to fetch', error);

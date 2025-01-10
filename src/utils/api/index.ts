@@ -20,8 +20,8 @@ export const getResponse = async <T>(url: string): Promise<GetResponseResult<T>>
     method: "GET",
     headers: {
       'Content-type': 'application/json',
-      'Accept': 'application/json'
     },
+    credentials: 'include',
   });
 
   const responseData = await checkResponse(res);

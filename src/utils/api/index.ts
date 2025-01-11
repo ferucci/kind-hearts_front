@@ -10,7 +10,6 @@ const checkResponse = async (res: Response) => {
     return res.json();
   }
   const err = await res.json();
-  console.log('error: ', err);
   return await Promise.reject(err);
 };
 

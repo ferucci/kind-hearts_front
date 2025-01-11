@@ -20,6 +20,7 @@ export function App() {
 
         setData(result?.data ?? []);
         setLoading(false);
+
       } catch (error) {
         console.error('Failed to fetch', error);
       }

@@ -182,7 +182,8 @@ body {
   border-bottom: 1px solid var(--color-yellow-200);
   border-right: transparent;
   animation: spinner .8s linear infinite;
-  position: sticky;
+  position: fixed;
   left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -16,21 +16,21 @@ export const Form = ({ data }: Props) => {
           control={control}
           errorMessage={errors.name?.message}
           name={'name'}
-          placeholder={`${form.fields.name}`}
+          placeholder={`${form.fields.name || 'Introduce yourself'}`}
         />
         <ControlledTextField
           as={'input'}
           control={control}
           errorMessage={errors.name?.message}
           name={'email'}
-          placeholder={`${form.fields.email}`}
+          placeholder={`${form.fields.email || 'Enter email address'}`}
         />
         <ControlledTextField
           as={'textarea'}
           control={control}
           errorMessage={errors.message?.message}
           name={'message'}
-          placeholder={`${form.fields.description}`}
+          placeholder={`${form.fields.description || 'Your question'}`}
         />
       </div>
       <Typography className={s.police}>

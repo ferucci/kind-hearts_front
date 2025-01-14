@@ -168,7 +168,7 @@ export const PrivacyPolicyContent = () => {
             </li>
             <li>
               By&nbsp;phone number:&nbsp;
-              <Typography as={'a'} className={s.link} href={contacts.phone.phone}>
+              <Typography as={'a'} className={s.link} href={`tel:+${contacts.phone.phone}`}>
                 {contacts.phone.visual}
               </Typography>
             </li>

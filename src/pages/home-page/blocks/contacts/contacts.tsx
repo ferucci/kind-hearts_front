@@ -69,7 +69,7 @@ const ContactsItems = ({ data }: Props) => {
             <Typography
               as={'a'}
               className="link"
-              href={contact.href || contact.phone}
+              href={`tel:+${contact.href || contact.phone}`}
               target="_blank"
               variant="subtitle1"
             >

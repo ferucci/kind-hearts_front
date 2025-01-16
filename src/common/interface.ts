@@ -84,7 +84,12 @@ export interface D {
     }
   },
   advantages: {
-    description: string,
+    descriptions: [
+      {
+        id: number,
+        text: string
+      }
+    ],
     item: []
   },
   ways_to_help: {

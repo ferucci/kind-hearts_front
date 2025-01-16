@@ -65,6 +65,7 @@ type AccordionListPropsType = {
 }
 
 const AccordionList = memo(({ items }: AccordionListPropsType) => {
+  // console.log(items)
   return (
     <Accordion className={s.list} type={'multiple'}>
       {items.map(item => (

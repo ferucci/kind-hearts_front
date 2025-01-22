@@ -16,24 +16,29 @@ type QuestionType = {
 const getQuestions = (data: D[]): QuestionType[] => {
   const { questions, contacts } = data[0];
 
-  const getQuestions: QuestionType[] = questions.map((question) => (
+  const items: QuestionType[] = questions.map((question) => (
     {
       content: (
-        <p>
-          {question.content}
-          {question.isEmail && (
-            <a href={contacts.email.label} rel={'noreferrer'} target={'_blank'}>
-              {contacts.email.label}
-            </a>
-          )}
-        </p>
+        <div>
+          {question.paragraphs.map((item) => (
+            <p key={v1()}>
+              {item.text}
+              {question.isEmail && (
+                <a href={contacts.email.label} rel={'noreferrer'} target={'_blank'}>
+                  {contacts.email.label}
+                </a>
+              )}
+            </p>
+          ))}
+
+        </div>
       ),
       id: v1(),
       title: question.title,
 
     }));
 
-  return getQuestions;
+  return items;
 }
 
 export const Questions = ({ data }: Props) => {

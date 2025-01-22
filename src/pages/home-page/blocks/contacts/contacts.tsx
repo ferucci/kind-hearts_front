@@ -24,8 +24,6 @@ export const Contacts = ({ data }: Props) => {
 }
 
 const AddressesItems = ({ data }: Props) => (
-  // console.log(data[0].contacts.address),
-
   <ul className={s.items}>
     {data[0].contacts.address.map((item, index) => {
       const { text, title, ...rest } = item

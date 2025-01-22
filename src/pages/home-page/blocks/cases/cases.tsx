@@ -24,7 +24,7 @@ const getCasesData = (data: D[]): DataCasesType[] => {
   const cards = data[0].our_cases_cards;
 
   const dataCases: DataCasesType[] = cards.map((card) => ({
-    alt: card.title.replace(/\s/g, '_').toLowerCase(),
+    alt: card.alt_field,
 
     basePath: `${apiUrl}${card.image[0].url.split('.').slice(0, -1).join('.')}`,
 

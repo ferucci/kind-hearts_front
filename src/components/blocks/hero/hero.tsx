@@ -36,20 +36,42 @@ export const Hero = ({ isButton = false, slogan = '', data }: Props) => {
               </Button>
             )}
           </div>
-          <span
-            aria-hidden
-            className={s.img}
-            style={{
-              backgroundImage: `url(${apiUrl}${hero.images.main_image.url})`,
-            }}
-          />
-          <span
-            aria-hidden
-            className={`${s.img} ${s.imgMobile}`}
-            style={{
-              backgroundImage: `url(${apiUrl}${hero.images.mobile_image.url})`,
-            }}
-          />
+          <picture>
+            <source
+              srcSet={`${apiUrl}${hero.images.main_image.url.replace(/\.[^.]+$/, '.avif')}`}
+              type="image/avif"
+            />
+            <source
+              srcSet={`${apiUrl}${hero.images.main_image.url.replace(/\.[^.]+$/, '.webp')}`}
+              type="image/webp"
+            />
+            <span
+              aria-hidden
+              className={s.img}
+              style={{
+                backgroundImage: `url(${apiUrl}${hero.images.main_image.url})`,
+              }}
+            />
+          </picture>
+
+          {/* Mobile version with the same pattern */}
+          <picture>
+            <source
+              srcSet={`${apiUrl}${hero.images.mobile_image.url.replace(/\.[^.]+$/, '.avif')}`}
+              type="image/avif"
+            />
+            <source
+              srcSet={`${apiUrl}${hero.images.mobile_image.url.replace(/\.[^.]+$/, '.webp')}`}
+              type="image/webp"
+            />
+            <span
+              aria-hidden
+              className={`${s.img} ${s.imgMobile}`}
+              style={{
+                backgroundImage: `url(${apiUrl}${hero.images.mobile_image.url})`,
+              }}
+            />
+          </picture>
         </div>
       </div>
     </section>

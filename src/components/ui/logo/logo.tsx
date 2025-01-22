@@ -17,19 +17,18 @@ export const Logo = ({ data }: Props, { to = APP_ROUTES.home, variant }: PropsLo
   const logoVertical = `${apiUrl}${logo_images.main_image.url}`
   const logoHorizontal = `${apiUrl}${logo_images.mobile_image.url}`
 
-
   return (
     <Link className={linkClassName} to={to}>
       {variant ? (
         <img
-          alt={'logo'}
+          alt={logo_images.alt_field}
           className={s.img}
           src={`${variant === 'vertical' ? logoVertical : logoHorizontal}`}
         />
       ) : (
         <picture>
           <source media={'(max-width: 560px)'} srcSet={logoHorizontal} />
-          <img alt={'logo'} className={s.img} src={logoVertical} />
+          <img alt={logo_images.alt_field} className={s.img} src={logoVertical} />
         </picture>
       )}
     </Link>

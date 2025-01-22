@@ -36,7 +36,8 @@ export interface D {
     },
     mobile_image: {
       url: string
-    }
+    },
+    alt_field: string
   }
   what_we_do: {
     title: string,
@@ -60,6 +61,7 @@ export interface D {
         image: {
           url: string
         },
+        alt_field: string,
         card_paragraph: [
           {
             id: number,
@@ -80,7 +82,8 @@ export interface D {
       }
       mobile_image: {
         url: string
-      }
+      },
+      alt_field: string
     }
   },
   advantages: {
@@ -97,7 +100,8 @@ export interface D {
     title: string,
     image: {
       url: string
-    }
+    },
+    alt_field: string
   },
   our_cases_title: string,
   our_cases_cards: [
@@ -108,6 +112,7 @@ export interface D {
           url: string
         }
       ],
+      alt_field: string,
       period: {
         date: string,
         datetime: string
@@ -128,7 +133,7 @@ export interface D {
     paragraphs: [
       {
         id: number,
-        description: string
+        text: string
       }
     ]
   },
@@ -137,7 +142,12 @@ export interface D {
     {
       id: number,
       title: string,
-      content: string,
+      paragraphs: [
+        {
+          id: number,
+          text: string
+        }
+      ],
       isEmail: boolean
     }
   ],

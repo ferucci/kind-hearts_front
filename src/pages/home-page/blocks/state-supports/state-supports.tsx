@@ -9,6 +9,7 @@ import { Props } from '@/common/interface'
 export const StateSupports = ({ data }: Props) => {
 
   const { how_supported } = data[0];
+
   if (!how_supported) return;
   const getSupports = () => {
 
@@ -37,7 +38,7 @@ export const StateSupports = ({ data }: Props) => {
             <div className={s.text}>
               {how_supported.paragraphs.map(item =>
                 <Typography key={item.id} variant={TypographyVariant.subtitle2}>
-                  {item.description}
+                  {item.text}
                 </Typography>
               )}
             </div>

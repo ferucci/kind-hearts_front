@@ -13,7 +13,6 @@ import {
 import { Props } from '@/common/interface'
 
 export const HomePage = ({ data }: Props) => {
-  console.log(data)
   return (
     <div className={'wrapper'}>
       <CustomHead

@@ -7,9 +7,10 @@ import { apiUrl } from '@/utils'
 
 const getDirectionsData = (data: D[]): DirectionPropsType[] => {
   const cards = data[0].what_we_do.cards;
+
   const directionsData: DirectionPropsType[] = cards.map((item) => ({
     img: {
-      alt: item.title.replace(/\s/g, '_').toLowerCase(),
+      alt: item.alt_field,
       basePath: `${apiUrl}${item.image.url.split('.').slice(0, -1).join('.')}`,
     },
     linkTo: item.linkTo ?? item.linkTo,

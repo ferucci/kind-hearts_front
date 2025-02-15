@@ -52,7 +52,7 @@ export const PrivacyPolicyContent = () => {
             Last updated: <time dateTime={isoDate}>{formattedDate}</time>
           </Typography>
           {header.content.map((item, idx) => (
-            <Typography key={idx}>{item.description}</Typography>
+            <Typography key={idx}>{item.text}</Typography>
           ))}
         </div>
       </div>
@@ -78,7 +78,7 @@ export const PrivacyPolicyContent = () => {
                   </Typography> : null}
 
                 {_item.description ? _item.description.map((desc, id) => (
-                  <Typography key={id}>{desc.description}</Typography>
+                  <Typography key={id}>{desc.text}</Typography>
                 )) : null}
 
                 {_item.list && _item.list.length > 0 ?
@@ -97,7 +97,7 @@ export const PrivacyPolicyContent = () => {
                   _item.paragraphs.map((parItem, parIndex) => (
 
                     <Typography key={parIndex}>
-                      {parItem.description}
+                      {parItem.text}
                     </Typography>
 
                   )) : null
@@ -111,13 +111,11 @@ export const PrivacyPolicyContent = () => {
                     {_item.add_list.map((innerItem, innerIndex) => (
 
                       <Typography as={'li'} className={s.text} key={innerIndex}>
-                        {innerItem.title ?
-                          <b>{innerItem.title}</b> : null
-                        }
+                        {innerItem.title && <b>{innerItem.title}</b>}
                         {innerItem.list.map(listItem => (
 
                           < Typography key={listItem.id}>
-                            {listItem.description}
+                            {listItem.text}
                           </Typography>
                         ))}
                       </Typography>
@@ -168,8 +166,8 @@ export const PrivacyPolicyContent = () => {
             </li>
             <li>
               By&nbsp;phone number:&nbsp;
-              <Typography as={'a'} className={s.link} href={`tel:+${contacts.phone.phone}`}>
-                {contacts.phone.visual}
+              <Typography as={'a'} className={s.link} href={`tel:+${contacts.phone.href}`}>
+                {contacts.phone.label}
               </Typography>
             </li>
           </ul>

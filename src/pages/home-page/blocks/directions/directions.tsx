@@ -17,7 +17,7 @@ const getDirectionsData = (data: D[]): DirectionPropsType[] => {
     text: (
       <>
         {item.card_paragraph.map((para) => (
-          <p key={para.id}>{para.description}</p>
+          <p key={para.id}>{para.text}</p>
         ))}
       </>
     ),
@@ -49,7 +49,7 @@ export const Directions = ({ data }: Props) => {
             <div className={s.text}>
               {what_we_do.title ? what_we_do.paragraphs.map(item =>
                 <Typography key={item.id}>
-                  {item.description}
+                  {item.text}
                 </Typography>
               ) : null}
             </div>
@@ -79,11 +79,13 @@ const DirectionsItems = ({ data }: Props) => (
 )
 
 const NoList = () => (
-  <ul className={s.no}>
-    {noList.map((item, index) => (
-      <Typography as={'li'} key={index} variant={TypographyVariant.slogan}>
-        {item}
-      </Typography>
-    ))}
-  </ul>
+  noList.length > 0 && (
+    <ul className={s.no}>
+      {noList.map((item, index) => (
+        <Typography as={'li'} key={index} variant={TypographyVariant.slogan}>
+          {item}
+        </Typography>
+      ))}
+    </ul>
+  )
 )

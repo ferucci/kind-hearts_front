@@ -15,7 +15,7 @@ const getMenuData = (data: D[]): Omit<MenuItemProps, 'callback'>[] => {
     { text: data[0].what_we_do.title, to: 'directions' },
     { text: data[0].ways_to_help.title, to: 'ways-help' },
     { text: data[0].our_cases_title, to: 'cases' },
-    { text: data[0].how_supported.menuItem_title, to: 'state-support' },
+    { text: 'Tax benefits', to: 'state-support' },
     { text: data[0].contacts.title, to: 'contacts' },
   ]
 
@@ -24,7 +24,7 @@ const getMenuData = (data: D[]): Omit<MenuItemProps, 'callback'>[] => {
 
 const getMobileMenu = (data: D[]) => {
   const mobileMenu = [
-    { content: data[0].contacts.phone.visual, href: data[0].contacts.phone.phone },
+    { content: data[0].contacts.phone.label, href: data[0].contacts.phone.href },
     {
       content: data[0].contacts.instagram.label,
       href: data[0].contacts.instagram.href,

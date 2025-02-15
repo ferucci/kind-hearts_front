@@ -9,7 +9,7 @@ import s from './advantage.module.scss'
 
 export type AdvantageType = {
   number: number
-  text: string
+  text?: string
   time: number
   title?: string
 }
@@ -25,7 +25,7 @@ export const Advantage = memo(({ number, text, time, title }: AdvantageType) => 
           {rounded}
         </motion.span>
       </Typography>
-      <Typography as={'span'}>{text}</Typography>
+      {text && <Typography as={'span'}>{text}</Typography>}
     </>
   )
 })

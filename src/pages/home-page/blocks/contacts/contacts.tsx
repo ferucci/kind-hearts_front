@@ -55,25 +55,32 @@ const ContactsItems = ({ data }: Props) => {
 
   return (
     <ul className={s.contacts}>
-      {['phone', 'email', 'instagram'].map(type => {
-        // @ts-ignore
+      {(['phone', 'email', 'instagram'] as const).map(type => {
         const contact = contactsData[type];
+
+        const getLink = {
+          phone: `tel:+${contact.href}`,
+          email: `mailto:${contact.href}`,
+          instagram: contact.href,
+        };
 
         if (!contact) return null;
 
         return (
           <li className={s.contact} key={type}>
-            <Typography as={'span'} className={s.subtitle}>
-              {contact.title}
-            </Typography>
+            {contact.title && (
+              <Typography as={'span'} className={s.subtitle}>
+                {contact.title}
+              </Typography>
+            )}
             <Typography
               as={'a'}
               className="link"
-              href={`tel:+${contact.href || contact.phone}`}
+              href={getLink[type]}
               target="_blank"
               variant="subtitle1"
             >
-              {contact.label || contact.visual}
+              {contact.label}
             </Typography>
           </li>
         );

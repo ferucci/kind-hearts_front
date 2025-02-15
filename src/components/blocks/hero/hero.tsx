@@ -19,9 +19,12 @@ export const Hero = ({ isButton = false, slogan = '', data }: Props) => {
             <Typography as={'h1'} className={s.title} variant={TypographyVariant.large}>
               {slogan + ' ' + hero.title}
             </Typography>
-            <Typography as={'span'} className={s.slogan} variant={TypographyVariant.subtitle2}>
-              {slogan === '' ? hero.subtitle : null}
-            </Typography>
+            {hero.subtitle && (
+              <Typography as={'span'} className={s.slogan} variant={TypographyVariant.subtitle2}>
+                {slogan === '' ? hero.subtitle : null}
+              </Typography>
+            )}
+
 
             {isButton && (
               <Button

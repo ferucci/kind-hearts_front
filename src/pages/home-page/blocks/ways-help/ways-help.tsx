@@ -16,16 +16,18 @@ export const WaysHelp = ({ data }: Props) => {
             <Typography as={'h2'} variant={TypographyVariant.title}>
               {ways_to_help.title ?? ways_to_help.title}
             </Typography>
-            <div className={s.text}>
-              <Typography>
-                {ways_to_help.description ?? ways_to_help.description}
-              </Typography>
-            </div>
+
+            {ways_to_help.description && (
+              <div className={s.text}>
+                <Typography>{ways_to_help.description}</Typography>
+              </div>
+            )}
+
             <div className={s.text}>
               <Typography variant={TypographyVariant.subtitle1}>
                 To help the fund, contact our manager at{' '}
-                <Typography as={'a'} className={s.link} href={`tel:+${contacts.phone.phone}`}>
-                  {contacts.phone.visual}
+                <Typography as={'a'} className={s.link} href={`tel:+${contacts.phone.href}`}>
+                  {contacts.phone.label}
                 </Typography>{' '}
                 or&nbsp;leave a request on the website.
               </Typography>
@@ -35,7 +37,7 @@ export const WaysHelp = ({ data }: Props) => {
             <div
               className={s.picture}
               style={{
-                backgroundImage: `url(${apiUrl}${ways_to_help.image.url})` || undefined,
+                backgroundImage: `url(${apiUrl}${ways_to_help.image.url})`,
               }}
             />
           </div>

@@ -15,14 +15,19 @@ export const Consultation = ({ data }: Props) => {
               {form.title}
             </Typography>
             <div className={s.text}>
-              <Typography variant={TypographyVariant.subtitle2}>
-                {form.subtitle}
-              </Typography>
+
+              {
+                form.subtitle &&
+                <Typography variant={TypographyVariant.subtitle2}>
+                  {form.subtitle}
+                </Typography>
+              }
+
               <Typography variant={TypographyVariant.subtitle2}>
                 Or write to us on{' '}
                 <a
                   className={s.link}
-                  href={`https://wa.me/${contacts.phone.phone}`}
+                  href={`https://wa.me/${contacts.phone.href}`}
                   rel={'noreferrer'}
                   target={'_blank'}
                 >

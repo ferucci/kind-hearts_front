@@ -15,8 +15,7 @@ import { apiUrl } from '@/utils'
 type DataCasesType = {
   alt: string
   basePath: string
-  date: string
-  dateTime: string
+  dateTime?: string
   title: string
 }
 
@@ -28,8 +27,7 @@ const getCasesData = (data: D[]): DataCasesType[] => {
 
     basePath: `${apiUrl}${card.image[0].url.split('.').slice(0, -1).join('.')}`,
 
-    date: card.period.date,
-    dateTime: card.period.datetime || '',
+    dateTime: card.period?.datetime || '',
 
     title: card.title,
   }));
@@ -60,12 +58,21 @@ export const Cases = ({ data }: Props) => {
             pagination={{ clickable: true, dynamicBullets: true }}
             spaceBetween={20}
           >
-            {getCasesData(data) ? getCasesData(data).map((item, index) => (
-              <SwiperSlide key={index}>
+            {getCasesData(data) ? getCasesData(data).map((item, index) => {
+              // Extract the filename from the basePath
+              const match = item.basePath.match(/_[^_.]+$/);
+              let newUrl = '';
+              if (match) {
+                const lastSuffix = match[0];
+
+                // Удаляем последний суффикс из URL
+                newUrl = item.basePath.replace(lastSuffix, '');
+                newUrl = newUrl.replace(/_/g, '-');
+              }
+              return <SwiperSlide key={index}>
                 <CaseCard
                   alt={item.alt}
                   avif={''}
-                  date={item.date}
                   dateTime={item.dateTime}
                   height={500}
                   loading={'lazy'}
@@ -75,8 +82,7 @@ export const Cases = ({ data }: Props) => {
                   width={610}
                 />
               </SwiperSlide>
-            )) : null}
-          </Swiper>
+            }) : null}          </Swiper>
         </div>
       </div>
     </section>

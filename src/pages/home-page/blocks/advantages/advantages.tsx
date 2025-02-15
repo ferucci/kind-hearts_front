@@ -17,16 +17,18 @@ export const Advantages = ({ data }: Props) => {
       <div className={'container'}>
         <div className={'section__wrapper'}>
           <div className={s.box}>
-            <div className={s.text}>
+            {advantages.descriptions.length > 0 && (
+              <div className={s.text}>
 
-              {advantages.descriptions.map(
-                (description: { id: number; text: string }, idx: number) => (
-                  <Typography key={idx} variant={TypographyVariant.subtitle2}>
-                    {description.text}
-                  </Typography>
-                ))}
+                {advantages.descriptions.map(
+                  (description: { id: number; text: string }, idx: number) => (
+                    <Typography key={idx} variant={TypographyVariant.subtitle2}>
+                      {description.text}
+                    </Typography>
+                  ))}
 
-            </div>
+              </div>
+            )}
             <ul className={s.items}>
               {advantages ? advantages.item.map((item: AdvantageType, index) => (
                 <li className={s.item} key={index}>

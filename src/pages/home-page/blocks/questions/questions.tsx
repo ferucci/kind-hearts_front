@@ -25,7 +25,7 @@ const getQuestions = (data: D[]): QuestionType[] => {
               {item.text}
               {question.isEmail && (
                 <a href={contacts.email.label} rel={'noreferrer'} target={'_blank'}>
-                  {contacts.email.label}
+                  {' '}{contacts.email.label}
                 </a>
               )}
             </p>

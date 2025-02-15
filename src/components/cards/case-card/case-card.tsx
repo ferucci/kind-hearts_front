@@ -12,14 +12,23 @@ export type CaseType = {
   title: string
 } & Omit<PicturePropsType, 'className'>
 export const CaseCard = memo(({ className, date, dateTime, title, ...rest }: CaseType) => {
+  const convertDate = (dateStr: string): string => {
+    const dateParts = dateStr.split('-');
+
+    // объект Date, передаю год и месяц (месяц начинается с нуля)
+    const date = new Date(Number(dateParts[0]), Number(dateParts[1]) - 1);
+
+    // метод toLocaleString для получения месяца на английском языке
+    return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  };
   return (
     <article className={`${s.card} ${className}`}>
       <Picture className={s.img} {...rest} />
       <Typography as={'h3'} className={s.title} variant={TypographyVariant.subtitle1}>
         {title}
-        {date && (
+        {dateTime && (
           <time className={s.date} dateTime={dateTime}>
-            {date}
+            {convertDate(dateTime)}
           </time>
         )}
       </Typography>

@@ -13,11 +13,13 @@ import {
 import { Props } from '@/common/interface'
 
 export const HomePage = ({ data }: Props) => {
+  const { advantages } = data[0];
+
   return (
     <div className={'wrapper'}>
       <CustomHead
         description={
-          data[0].advantages.descriptions[0].text
+          advantages.descriptions.length > 0 ? advantages.descriptions[0].text : ''
         }
         title={`Home page | ${data[0].name}`}
       />

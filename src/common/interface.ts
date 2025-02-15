@@ -1,30 +1,3 @@
-interface Contacts {
-  title: string,
-  address: [
-    {
-      title: string,
-      text: string,
-      backgroundColor: string,
-      borderColor: string
-    }
-  ],
-  phone: {
-    phone: number,
-    visual: string,
-    title: string
-  },
-  email: {
-    href: string,
-    label: string,
-    title: string
-  },
-  instagram: {
-    href: string,
-    label: string,
-    title: string
-  }
-  map_link: string
-}
 
 export interface D {
   id: number,
@@ -44,7 +17,7 @@ export interface D {
     paragraphs: [
       {
         id: number,
-        description: string,
+        text: string,
       }
     ]
     tags: [
@@ -65,7 +38,7 @@ export interface D {
         card_paragraph: [
           {
             id: number,
-            description: string
+            text: string
           }
         ]
       }
@@ -114,15 +87,13 @@ export interface D {
       ],
       alt_field: string,
       period: {
-        date: string,
         datetime: string
       }
     }
   ],
   how_supported: {
     title: string,
-    menuItem_title: string,
-    advantages: [
+    how_supported_tags: [
       {
         id: number,
         number: number,
@@ -162,13 +133,40 @@ export interface D {
   },
   contacts: Contacts
 }
+export interface Contacts {
+  title: string,
+  address: [
+    {
+      title: string,
+      text: string,
+      backgroundColor: string,
+      borderColor: string
+    }
+  ],
+  phone: {
+    href: number,
+    label: string,
+    title: string
+  },
+  email: {
+    href: string,
+    label: string,
+    title: string
+  },
+  instagram: {
+    href: string,
+    label: string,
+    title: string
+  }
+  map_link: string
+}
 export interface Header {
   title: string;
   content: Description[];
 }
 export interface Description {
   id: number;
-  description: string;
+  text: string;
 }
 export interface ListItem {
   id: number;
@@ -188,14 +186,12 @@ export interface BlockItem {
   description: Description[];
   paragraphs: Description[];
 }
-
 export interface SectionPolice {
   id: number;
   title: string;
   link_connection: string;
   inner_blocks: BlockItem[];
 }
-
 export interface DPolice {
   id: number;
   updatedAt: string;
@@ -205,7 +201,6 @@ export interface DPolice {
   section: SectionPolice[];
   contacts: Contacts
 }
-
 export type Props = {
   isButton?: boolean
   slogan?: string

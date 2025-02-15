@@ -13,7 +13,7 @@ export const StateSupports = ({ data }: Props) => {
   if (!how_supported) return;
   const getSupports = () => {
 
-    const supports: SupportCardProps[] = how_supported.advantages.map(item => ({
+    const supports: SupportCardProps[] = how_supported.how_supported_tags.map(item => ({
       text: item.text, title: item.title, number: item.number
     }))
 

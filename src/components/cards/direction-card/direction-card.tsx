@@ -13,29 +13,29 @@ export type DirectionPropsType = {
   title: string
   buttonText?: string
 }
-export const DirectionCard = memo(({ img, linkTo, text, title, buttonText }: DirectionPropsType) => {
+export const DirectionCard = memo(({ ...props }: DirectionPropsType) => {
   return (
     <article className={s.card}>
       <div className={s.imgWrapper}>
         <Picture
-          alt={img.alt}
+          alt={props.img.alt}
           avif={''}
           className={s.img}
           height={330}
           loading={'lazy'}
-          src={`${img.basePath}.jpg`}
+          src={`${props.img.basePath}.jpg`}
           webp={''}
           width={530}
         />
       </div>
       <Typography as={'h3'} className={s.title} variant={TypographyVariant.subtitle1}>
-        {title}
+        {props.title}
       </Typography>
 
-      <div className={s.text}>{text}</div>
+      <div className={s.text}>{props.text}</div>
 
-      <Button as={Link} className={s.link} to={linkTo}>
-        {buttonText}
+      <Button as={Link} className={s.link} to={props.linkTo}>
+        {props.buttonText}
       </Button>
     </article>
   )

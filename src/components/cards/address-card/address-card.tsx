@@ -18,7 +18,7 @@ export const AddressCard = memo(
         <Typography as={'h3'} variant={TypographyVariant.subtitle1}>
           {title}
         </Typography>
-        <Typography>{text}</Typography>
+        {text && <Typography>{text}</Typography>}
       </article>
     )
   }

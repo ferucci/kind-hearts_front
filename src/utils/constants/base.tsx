@@ -1,4 +1,4 @@
-export const apiUrl = "https://api.khcharity.com/";
+export const apiUrl = "https://api.khcharity.com";
 
 export const APP_ROUTES = {
   home: '/',

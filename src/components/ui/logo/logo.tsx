@@ -21,14 +21,14 @@ export const Logo = ({ data }: Props, { to = APP_ROUTES.home, variant }: PropsLo
     <Link className={linkClassName} to={to}>
       {variant ? (
         <img
-          alt={logo_images.alt_field}
+          alt="logo"
           className={s.img}
           src={`${variant === 'vertical' ? logoVertical : logoHorizontal}`}
         />
       ) : (
         <picture>
           <source media={'(max-width: 560px)'} srcSet={logoHorizontal} />
-          <img alt={logo_images.alt_field} className={s.img} src={logoVertical} />
+          <img alt="logo" className={s.img} src={logoVertical} />
         </picture>
       )}
     </Link>
